@@ -5,18 +5,52 @@ Demonstration:
 
 
 
-Key Contributions:
+This project demonstrates the development of a fully autonomous robotic pick-and-place sorting system using the OpenManipulator-X robotic arm and an Intel RealSense D435 camera. The system integrates real-time vision-based object detection, 3D localization, and motion planning to accurately detect, grasp, and sort colored spheres within a defined workspace.
 
-Camera Integration & Image Processing: Utilized an Intel RealSense D435 camera and OpenCV to implement a vision system that detects and classifies colored spheres in the robot’s workspace. Employed HSV color space and Hough Circle Transform for accurate color segmentation and sphere detection.
-Coordinate Transformation: Applied the Kabsch algorithm for camera-to-robot coordinate frame transformation, enabling precise 3D localization of objects in the robot’s frame.
-Motion Planning & Control: Implemented real-time trajectory planning and joint-level control for the OpenManipulator-X robot, optimizing movement to minimize errors and avoid robot joint limits using velocity clipping.
-Error Analysis & Performance Optimization: Achieved consistent low error rates in object detection (below 4%) across various lighting conditions. Improved system efficiency by minimizing computation and optimizing movement time.
-System Robustness: Incorporated multiple failure detection and prevention mechanisms to handle robot errors and lighting inconsistencies, including dynamic adjustment of camera frame data collection.
-Autonomous Operation: Designed the system to autonomously detect, pick, and place objects in sequence, with the robot returning to idle mode upon completion.
-Skills & Technologies:
+Features
+Vision-Based Object Detection:
 
-Robotics: OpenManipulator-X, Intel RealSense D435, motion planning, PID control
-Programming: Python, OpenCV, ROS
-Computer Vision: Object detection, coordinate transformation, Hough Circle Transform, HSV color space, PnP algorithm
-Systems Integration: Real-time control loop, trajectory planning, error handling
-Outcome: Successfully developed a robust sorting system that demonstrated high accuracy and real-time adaptability in a variety of environments, achieving consistent, reliable performance in object sorting tasks.
+Utilizes HSV color space for precise color segmentation.
+Detects spherical objects using Hough Circle Transform and contour analysis.
+Implements image preprocessing techniques (morphological opening/closing) for noise reduction.
+3D Localization:
+
+Uses the Perspective-n-Point (PnP) algorithm to calculate the 3D position of objects in the camera frame.
+Transforms camera frame coordinates to the robot’s frame using the Kabsch algorithm.
+Motion Planning and Control:
+
+Generates smooth and efficient trajectories using cubic/quintic polynomials.
+Implements real-time control with velocity clipping to ensure safe operation within joint limits.
+System Robustness:
+
+Dynamic error handling to skip unreachable objects and prevent overextension.
+Adapts to changes in lighting and workspace conditions for consistent performance.
+Autonomous Operation:
+
+Continuously detects, picks, and places objects in sequence.
+Enters idle mode and waits for new objects when the workspace is clear.
+
+System Overview
+Vision Pipeline
+Convert workspace image to HSV color space for color segmentation.
+Detect and classify spheres by color and shape using Hough Circle Transform.
+Map detected objects’ coordinates from the camera frame to the robot’s frame.
+
+Sorting Workflow
+Detect all colored spheres in the workspace.
+Map sphere positions to robot coordinates.
+Generate motion trajectories for the robot to pick and place each sphere in its designated location.
+Repeat until all objects are sorted or workspace is clear.
+Consistently low error rates (<4%) across various lighting conditions.
+
+Technologies Used
+Robotics: OpenManipulator-X robotic arm, ROS
+Computer Vision: OpenCV, HSV color space, Hough Circle Transform, Perspective-n-Point (PnP) algorithm
+Programming: Python
+Algorithms: Kabsch algorithm, cubic/quintic polynomial trajectory planning, PID control
+
+Challenges and Learnings
+Addressed issues with depth perception inaccuracies by switching to PnP-based 3D localization.
+Optimized robot speed and reduced trajectory calculation time to minimize lag.
+Overcame lighting sensitivity issues by dynamically adjusting image capture timing and camera placement.
+Successfully integrated multiple modules from prior work, including inverse kinematics, trajectory planning, and vision-based calibration.
