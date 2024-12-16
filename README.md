@@ -31,25 +31,30 @@ Continuously detects, picks, and places objects in sequence.
 Enters idle mode and waits for new objects when the workspace is clear.
 
 System Overview
-Vision Pipeline
+
+Vision Pipeline:
+
 Convert workspace image to HSV color space for color segmentation.
 Detect and classify spheres by color and shape using Hough Circle Transform.
 Map detected objects’ coordinates from the camera frame to the robot’s frame.
 
-Sorting Workflow
+Sorting Workflow:
+
 Detect all colored spheres in the workspace.
 Map sphere positions to robot coordinates.
 Generate motion trajectories for the robot to pick and place each sphere in its designated location.
 Repeat until all objects are sorted or workspace is clear.
 Consistently low error rates (<4%) across various lighting conditions.
 
-Technologies Used
+Technologies Used:
+
 Robotics: OpenManipulator-X robotic arm, ROS
 Computer Vision: OpenCV, HSV color space, Hough Circle Transform, Perspective-n-Point (PnP) algorithm
 Programming: Python
 Algorithms: Kabsch algorithm, cubic/quintic polynomial trajectory planning, PID control
 
 Challenges and Learnings
+
 Addressed issues with depth perception inaccuracies by switching to PnP-based 3D localization.
 Optimized robot speed and reduced trajectory calculation time to minimize lag.
 Overcame lighting sensitivity issues by dynamically adjusting image capture timing and camera placement.
