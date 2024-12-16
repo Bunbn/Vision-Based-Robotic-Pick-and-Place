@@ -1,6 +1,10 @@
 # Vision-Based-Robotic-Pick-and-Place
 Developed and implemented a fully autonomous robotic pick-and-place sorting system that integrates vision-based detection, 3D localization, and motion planning for accurate object sorting in a robotic workspace.
 
+Demonstration:
+
+
+
 Key Contributions:
 
 Camera Integration & Image Processing: Utilized an Intel RealSense D435 camera and OpenCV to implement a vision system that detects and classifies colored spheres in the robot’s workspace. Employed HSV color space and Hough Circle Transform for accurate color segmentation and sphere detection.
