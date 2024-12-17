@@ -5,6 +5,10 @@ Demonstration:
 
 
 
+https://github.com/user-attachments/assets/fdefc919-40c9-4368-a8f0-cb0a83f61745
+
+
+
 This project demonstrates the development of a fully autonomous robotic pick-and-place sorting system using the OpenManipulator-X robotic arm and an Intel RealSense D435 camera. The system integrates real-time vision-based object detection, 3D localization, and motion planning to accurately detect, grasp, and sort colored spheres within a defined workspace.
 
 Features
